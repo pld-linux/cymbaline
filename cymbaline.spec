@@ -1,7 +1,6 @@
-#
-# Conditional build:
-%bcond_without	aumix	# build without volume control
-#
+# TODO:
+# - package gom mixer
+# - fix pyao usage to choose default driver instead of hardcoded alsa
 Summary:	An intelligent mp3 player
 Summary(pl.UTF-8):	Inteligentny odtwarzacz mp3
 Name:		cymbaline
@@ -12,12 +11,16 @@ Group:		Applications/Sound
 Source0:	http://silmarill.org/files/%{name}-%{version}.tar.gz
 # Source0-md5:	698e795be504ce9d77e9a55021daa0c9
 URL:		http://silmarill.org/cymbaline.htm
-%{?with_aumix:BuildRequires:	aumix}
-BuildRequires:	python-devel >= 1:2.0
-BuildRequires:	python-mad
-BuildRequires:	python-pyao-devel
+BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	sed >= 4.0
+# FIXME: alsa output is hardcoded (instead of default)
+Requires:	libao-alsa
+Requires:	python-mad
+Requires:	python-pyao
+Suggests:	gom
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -40,6 +43,8 @@ przejście o 2 albumy dalej, przejście do wybranego albumu itp.
 %prep
 %setup -q
 
+sed -i -e 's,"/cdrom/","/media/cdrom/",' cypack/conf.py
+
 %build
 %{__python} setup.py build
 
@@ -50,7 +55,7 @@ rm -rf $RPM_BUILD_ROOT
 	--optimize=2 \
 	--root=$RPM_BUILD_ROOT
 
-install %{name}.py $RPM_BUILD_ROOT%{_bindir}/%{name}
+mv $RPM_BUILD_ROOT%{_bindir}/%{name}.py $RPM_BUILD_ROOT%{_bindir}/%{name}
 
 %py_postclean
 
@@ -61,4 +66,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README
 %attr(755,root,root) %{_bindir}/%{name}
-%{py_sitescriptdir}/*
+%{py_sitescriptdir}/cypack
+%{py_sitescriptdir}/cymbaline-*.egg-info
