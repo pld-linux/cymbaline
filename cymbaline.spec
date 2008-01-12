@@ -1,3 +1,4 @@
+#
 # Conditional build:
 %bcond_without	aumix	# build without volume control
 #
@@ -16,6 +17,7 @@ BuildRequires:	python-devel >= 1:2.0
 BuildRequires:	python-mad
 BuildRequires:	python-pyao-devel
 BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.219
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -27,7 +29,7 @@ navigation: you can start playing the next album, skip 2 albums ahead,
 go to a specific album, etc.
 
 %description -l pl.UTF-8
-Cymbaline jest uczącym się odtwarzaczem muzyki. Ustwia on punkty dla
+Cymbaline jest uczącym się odtwarzaczem muzyki. Ustawia on punkty dla
 każdego utworu słuchanego przez użytkownika, który może ustawić
 progi aby program mógł automatycznie stworzyć listy odtwarzania z
 ulubionych utworów. W trybie losowym program będzie częściej
