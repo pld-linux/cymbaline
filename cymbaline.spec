@@ -14,7 +14,6 @@ URL:		http://silmarill.org/cymbaline.htm
 BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
-BuildRequires:	sed >= 4.0
 # FIXME: alsa output is hardcoded (instead of default)
 Requires:	libao-alsa
 Requires:	python-mad
@@ -43,7 +42,7 @@ przejście o 2 albumy dalej, przejście do wybranego albumu itp.
 %prep
 %setup -q
 
-sed -i -e 's,"/cdrom/","/media/cdrom/",' cypack/conf.py
+%{__sed} -i -e 's,"/cdrom/","/media/cdrom/",' cypack/conf.py
 
 %build
 %{__python} setup.py build
