@@ -10,7 +10,7 @@ License:	GPL v2+
 Group:		Applications/Sound
 Source0:	http://silmarill.org/files/%{name}-%{version}.tar.gz
 # Source0-md5:	c47da66cae027ec401c1380662bb22ed
-URL:		http://silmarill.org/cymbaline.htm
+URL:		http://silmarill.org/index.html?Cymbaline
 BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
