@@ -4,12 +4,12 @@
 Summary:	An intelligent mp3 player
 Summary(pl.UTF-8):	Inteligentny odtwarzacz mp3
 Name:		cymbaline
-Version:	1.3e
+Version:	1.3d
 Release:	1
 License:	GPL v2+
 Group:		Applications/Sound
 Source0:	http://silmarill.org/files/%{name}-%{version}.tar.gz
-# Source0-md5:	c47da66cae027ec401c1380662bb22ed
+# Source0-md5:	633856d8743a531b2330e5bd3902d9e1
 URL:		http://silmarill.org/index.html?Cymbaline
 BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	rpm-pythonprov
