@@ -14,6 +14,7 @@ URL:		http://silmarill.org/index.html?Cymbaline
 BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	sed >= 4.0
 # FIXME: alsa output is hardcoded (instead of default)
 Requires:	libao-alsa
 Requires:	python-mad
