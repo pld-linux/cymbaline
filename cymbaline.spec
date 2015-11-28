@@ -46,14 +46,12 @@ przejście o 2 albumy dalej, przejście do wybranego albumu itp.
 %{__sed} -i -e 's,"/cdrom/","/media/cdrom/",' cypack/conf.py
 
 %build
-%{__python} setup.py build
+%py_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__python} setup.py install \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT
+%py_install
 
 mv $RPM_BUILD_ROOT%{_bindir}/%{name}.py $RPM_BUILD_ROOT%{_bindir}/%{name}
 
